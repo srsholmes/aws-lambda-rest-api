@@ -36,7 +36,7 @@ functions:
     handler: lib/index.create
     events:
       - http:
-          path: manifests
+          path: entries
           method: post
           cors: true
 
@@ -44,7 +44,7 @@ functions:
     handler: lib/index.list
     events:
       - http:
-          path: manifests
+          path: entries
           method: get
           cors: true
 
@@ -52,7 +52,7 @@ functions:
     handler: lib/index.get
     events:
       - http:
-          path: manifests/{id}
+          path: entries/{id}
           method: get
           cors: true
 
@@ -60,7 +60,7 @@ functions:
     handler: lib/index.update
     events:
       - http:
-          path: manifests/{id}
+          path: entries/{id}
           method: put
           cors: true
 
@@ -68,7 +68,7 @@ functions:
     handler: lib/index.del
     events:
       - http:
-          path: manifests/{id}
+          path: entries/{id}
           method: delete
           cors: true
 

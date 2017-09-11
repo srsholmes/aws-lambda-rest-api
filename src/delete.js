@@ -1,15 +1,13 @@
 const db = require('./dynamodb');
 
 const del = async (event, context, callback) => {
-  const params = {
-    TableName: process.env.DYNAMODB_TABLE,
-    Key: {
-      id: event.pathParameters.id,
-    },
-  };
-
   try {
-    await db.delete(params).promise();
+    await db.delete({
+      TableName: process.env.DYNAMODB_TABLE,
+      Key: {
+        id: event.pathParameters.id,
+      },
+    }).promise();
     const response = { statusCode: 200, body: JSON.stringify({}) };
     callback(null, response);
   } catch (err) {
