@@ -8,7 +8,6 @@ const get = db => async (event, context, callback) => {
 
   try {
     const res = await db.get(params).promise();
-    console.log(res)
     const response = { statusCode: 200, body: JSON.stringify(res.Item) };
     callback(null, response);
   } catch (err) {

@@ -13,10 +13,13 @@ const create = db => async (event, context, callback) => {
       updatedAt: timestamp,
     },
   };
-  
+
   try {
     await db.put(params).promise();
-    const response = { statusCode: 200, body: JSON.stringify(params.Item) };
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(params.Item),
+    };
     callback(null, response);
   } catch (err) {
     console.log(err);
