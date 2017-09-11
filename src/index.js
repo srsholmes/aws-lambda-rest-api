@@ -1,6 +1,13 @@
-export { default as create } from './create';
-export { default as get } from './get';
-export { default as list } from './list';
-export { default as update } from './update';
-export { default as del } from './delete';
-export { default as dynamodb } from './dynamodb';
+import create from './create';
+import get from './get';
+import list from './list';
+import update from './update';
+import del from './delete';
+
+const db = require('./dynamodb');
+
+exports.create = create(db);
+exports.get = get(db);
+exports.list = list(db);
+exports.update = update(db);
+exports.del = del(db);

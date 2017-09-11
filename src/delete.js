@@ -1,6 +1,4 @@
-const db = require('./dynamodb');
-
-const del = async (event, context, callback) => {
+const del = db => async (event, context, callback) => {
   try {
     await db.delete({
       TableName: process.env.DYNAMODB_TABLE,

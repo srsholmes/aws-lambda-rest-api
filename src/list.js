@@ -1,6 +1,4 @@
-const db = require('./dynamodb');
-
-const list = async (event, context, callback) => {
+const list = db => async (event, context, callback) => {
   const params = { TableName: process.env.DYNAMODB_TABLE };
 
   try {
@@ -16,4 +14,4 @@ const list = async (event, context, callback) => {
 
 };
 
-module.exports = list  ;
+module.exports = list;

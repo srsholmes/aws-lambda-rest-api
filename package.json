@@ -9,7 +9,7 @@
     "fixtures": "serverless dynamodb migrate",
     "setup:db": "serverless dynamodb install",
     "offline": "serverless offline start",
-    "test": "TEST=environment nyc --check-coverage --lines 100 --functions 100 --branches 100 node ./test/harness ./test/{,**/}*.spec.js && npm run report"
+    "test": "TEST=environment DYNAMODB_TABLE=serverless-rest-api-with-dynamodb-dev IS_OFFLINE=true nyc --check-coverage --lines 100 --functions 100 --branches 100 node ./test/harness ./test/{,**/}*.spec.js && npm run report"
   },
   "dependencies": {
     "aws-sdk": "^2.12.0",

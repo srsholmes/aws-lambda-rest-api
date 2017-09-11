@@ -1,9 +1,8 @@
 const { v4 } = require('uuid');
-const db = require('./dynamodb');
-
-const create = async (event, context, callback) => {
+const create = db => async (event, context, callback) => {
   const timestamp = new Date().getTime();
   const { entry, domain } = JSON.parse(event.body);
+
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
     Item: {
@@ -14,7 +13,7 @@ const create = async (event, context, callback) => {
       updatedAt: timestamp,
     },
   };
-
+  
   try {
     await db.put(params).promise();
     const response = { statusCode: 200, body: JSON.stringify(params.Item) };

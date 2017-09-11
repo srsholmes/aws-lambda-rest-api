@@ -1,7 +1,5 @@
-const db = require('./dynamodb');
-
 // TODO: Sort this out a bit..
-const update = async (event, context, callback) => {
+const update = db => async (event, context, callback) => {
   const timestamp = new Date().getTime();
   const { entry, domain } = JSON.parse(event.body);
 

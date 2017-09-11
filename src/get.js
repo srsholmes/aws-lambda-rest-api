@@ -1,6 +1,4 @@
-const db = require('./dynamodb');
-
-const get = async (event, context, callback) => {
+const get = db => async (event, context, callback) => {
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
     Key: {
