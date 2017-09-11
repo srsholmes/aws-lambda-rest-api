@@ -2,8 +2,6 @@ const { v4 } = require('uuid');
 const db = require('./dynamodb');
 
 const create = async (event, context, callback) => {
-  console.log('CREATE')
-  console.log(event)
   const timestamp = new Date().getTime();
   const { entry, domain } = JSON.parse(event.body);
   const params = {

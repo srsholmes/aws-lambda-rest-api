@@ -1,10 +1,16 @@
 const db = require('./dynamodb');
 
-const get = params => async (event, context, callback) => {
+const get = async (event, context, callback) => {
+  const params = {
+    TableName: process.env.DYNAMODB_TABLE,
+    Key: {
+      id: event.pathParameters.id,
+    },
+  };
 
   try {
     const res = await db.get(params).promise();
-    console.log(res);
+    console.log(res)
     const response = { statusCode: 200, body: JSON.stringify(res.Item) };
     callback(null, response);
   } catch (err) {
@@ -15,9 +21,4 @@ const get = params => async (event, context, callback) => {
 
 };
 
-module.exports = get({
-  TableName: process.env.DYNAMODB_TABLE,
-  Key: {
-    id: event.pathParameters.id,
-  },
-});
+module.exports = get;
