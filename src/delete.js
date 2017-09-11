@@ -9,6 +9,7 @@ const del = db => async (event, context, callback) => {
     const response = { statusCode: 200, body: JSON.stringify({}) };
     callback(null, response);
   } catch (err) {
+    console.log('inside the catch!', err)
     console.log(err);
     callback(new Error('Couldn\'t delete the entry.'));
     return;
