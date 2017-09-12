@@ -28,7 +28,6 @@ const update = db => async (event, context, callback) => {
     const response = { statusCode: 200, body: JSON.stringify(res) };
     callback(null, response);
   } catch (err) {
-    console.log(err);
     callback(new Error('Couldn\'t update the entry.'));
     return;
   }

@@ -31,18 +31,11 @@ test('delete', async t => {
 
 
 test('delete - Error ', async t => {
-
   const mockDB = {
     put: () => ({}),
   };
-
-  const body = {
-    entry: 'test',
-    domain: 'test-domain',
-  };
-
   const event = {
-    body: JSON.stringify(body),
+    body: JSON.stringify({}),
   };
 
   const spy = sinon.spy();

@@ -31,22 +31,12 @@ test('create', async t => {
 });
 
 test('create - Error ', async t => {
-
-  const mockDB = {
-    put: () => ({}),
-  };
-
-  const body = {
-    entry: 'test',
-    domain: 'test-domain',
-  };
-
   const event = {
-    body: JSON.stringify(body),
+    body: JSON.stringify({}),
   };
 
   const spy = sinon.spy();
-  await create(mockDB)(event, null, spy);
+  await create({})(event, null, spy);
   const callArgs = spy.getCalls()[ 0 ].args;
   t.ok(callArgs[0] instanceof Error, 'The callback should be called with an Error.');
   t.end();
