@@ -25,7 +25,7 @@ test('delete', async t => {
 
   t.equals(callArgs[ 0 ], null, 'The function should call the callback with null as first argument');
   t.equals(callArgs[ 1 ].statusCode, 200, 'The function should respond with a 200 status code');
-  t.equals(callArgs[ 1 ].body, '{}', 'The function should respond with the correct entry');
+  t.equals(callArgs[ 1 ].body, '{}', 'The function should respond with an empty entry');
   t.end();
 });
 
