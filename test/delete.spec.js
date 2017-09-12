@@ -28,3 +28,26 @@ test('delete', async t => {
   t.end();
 });
 
+
+test('delete - Error ', async t => {
+
+  const mockDB = {
+    put: () => ({}),
+  };
+
+  const body = {
+    entry: 'test',
+    domain: 'test-domain',
+  };
+
+  const event = {
+    body: JSON.stringify(body),
+  };
+
+  const spy = sinon.spy();
+  await del(mockDB)(event, null, spy);
+  const callArgs = spy.getCalls()[ 0 ].args;
+  t.ok(callArgs[0] instanceof Error, 'The callback should be called with an Error.');
+  t.end();
+});
+

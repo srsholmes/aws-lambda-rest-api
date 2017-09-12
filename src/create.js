@@ -1,20 +1,20 @@
 const { v4 } = require('uuid');
 const create = db => async (event, context, callback) => {
-  const timestamp = new Date().getTime();
-  const { entry, domain } = JSON.parse(event.body);
-
-  const params = {
-    TableName: process.env.DYNAMODB_TABLE,
-    Item: {
-      id: v4(),
-      entry,
-      domain,
-      createdAt: timestamp,
-      updatedAt: timestamp,
-    },
-  };
-
   try {
+    const timestamp = new Date().getTime();
+    const { entry, domain } = JSON.parse(event.body);
+
+    const params = {
+      TableName: process.env.DYNAMODB_TABLE,
+      Item: {
+        id: v4(),
+        entry,
+        domain,
+        createdAt: timestamp,
+        updatedAt: timestamp,
+      },
+    };
+
     await db.put(params).promise();
     const response = {
       statusCode: 200,
@@ -22,6 +22,7 @@ const create = db => async (event, context, callback) => {
     };
     callback(null, response);
   } catch (err) {
+    console.log('INSIDE THE CATCH');
     console.log(err);
     callback(new Error('Couldn\'t create the entry item.'));
     return;
