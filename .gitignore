@@ -5,5 +5,7 @@ jspm_packages
 lib
 .nyc_output
 
+coverage
+
 # Serverless directories
 .serverless
