@@ -4,14 +4,7 @@ import list from '../src/list';
 
 test('list', async t => {
 
-  const items = [
-    {
-      Item: 'My mock item 1',
-    },
-    {
-      Item: 'My mock item 2',
-    },
-  ];
+  const items = Array.from({ length: 5 }).map((x, i) => ({ Item: `My Item ${i}` }));
 
   const mockDB = {
     scan: () => ({
@@ -44,7 +37,7 @@ test('list - Error ', async t => {
       promise: () => Promise.reject([]),
     }),
   };
-  
+
   const event = {
     body: JSON.stringify({}),
   };
