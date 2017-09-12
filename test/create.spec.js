@@ -24,7 +24,7 @@ test('create', async t => {
 
   t.equals(callArgs[ 0 ], null, 'The function should call the callback with null as first argument');
   t.ok(isUuid(id), 'The function should respond with an entity with a uuid');
-  t.ok(callArgs[ 1 ].statusCode, 200, 'The function should respond with an entity with a uuid');
+  t.equals(callArgs[ 1 ].statusCode, 200, 'The function should respond with a 200 status code');
   t.equals(entry, body.entry, 'The function should respond with the correct entry');
   t.equals(domain, body.domain, 'The function should respond with the correct domain');
   t.end();
