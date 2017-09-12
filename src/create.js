@@ -22,8 +22,6 @@ const create = db => async (event, context, callback) => {
     };
     callback(null, response);
   } catch (err) {
-    console.log('INSIDE THE CATCH');
-    console.log(err);
     callback(new Error('Couldn\'t create the entry item.'));
     return;
   }
